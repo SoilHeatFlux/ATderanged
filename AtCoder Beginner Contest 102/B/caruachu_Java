@@ -1,0 +1,20 @@
+import java.util.*;
+
+
+public class Main {
+    public static void main(String[] args){
+
+        Scanner s = new Scanner(System.in);
+        
+        int a = s.nextInt();
+        int array[] = new int[a];
+
+        for (int i = 0; i < a; i++) {
+            array[i] = s.nextInt();
+        }
+
+        Arrays.sort(array);
+
+        System.out.println(array[a-1] - array[0]);
+    }
+}
