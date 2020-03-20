@@ -1,0 +1,24 @@
+import java.util.*;
+
+/*
+あなたは、X円を持ってケーキとドーナツを買いに出かけました。
+
+あなたはまずケーキ屋で 1 個 A 円のケーキを 1 個買いました。
+次に、ドーナツ屋で 1 個 B 円のドーナツをできるだけたくさん買いました。
+
+これらの買い物のあと手元に残っている金額は何円ですか。
+*/
+
+public class Main {
+    public static void main(String[] args){
+
+        Scanner s = new Scanner(System.in);
+        int money = s.nextInt();
+        int cake = s.nextInt();
+        int donut = s.nextInt();
+
+        // 余りの計算
+        int rest = (money - cake) % donut;
+        System.out.println(rest);
+    }
+}
