@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+/*
+各要素が 1 か 2 か 3 である長さ N の数字列 a1a2…aN が与えられます。 
+xi,j を次のように定義します。
+
+x1,j:=aj (1≤j≤N)xi,j:|xi−1,j−xi−1,j+1| (2≤i≤N かつ1≤j≤N+1−i)xN,1 を求めてください。
+*/
+
+public class Main {
+    public static void main(String[] args){
+
+        Scanner s = new Scanner(System.in);
+        int h = s.nextInt();
+        String w = s.next();
+
+        // 最初の配列の宣言
+        int[] temp = new int[h];
+
+        String []resultArray = w.split("");
+
+        // 計算元の数値を格納した配列を作成
+        for(int i = 0; i < resultArray.length; i++){
+            temp[i] = Integer.parseInt(resultArray[i]);
+        }
+
+        int result = list(temp);
+        System.out.println(result);
+    }
+
+    // 引数で受け取った配列の再帰処理
+    public static int list(int[] list) {
+        int temp[] = new int[list.length - 1];
+
+        for (int i = 0; i < list.length; i++) {
+            temp[i] = Math.abs(list[i] - list[i + 1]);
+        }
+
+        if (list.length > 1) {
+            return list(temp);
+        } else {
+            return list[0];
+        }
+    } 
+}
