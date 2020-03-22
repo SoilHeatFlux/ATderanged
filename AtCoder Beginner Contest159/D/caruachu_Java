@@ -1,0 +1,52 @@
+import java.util.HashMap;
+import java.util.Scanner;
+
+/*
+問題文
+ボールが N 個あり、i 番目のボールには整数 Ai が書かれています。
+k=1,2,...,N に対して以下の問題を解いて、答えをそれぞれ出力してください。
+
+k 番目のボールを除いた N−1 個のボールから、書かれている整数が等しいような異なる 
+2 つのボールを選び出す方法の数を求めてください。選ぶ順序は考慮しません。
+
+制約
+3≤N≤2×10^5
+1≤Ai≤N
+入力はすべて整数である。
+*/
+public class Main {
+    public static void main(String[] args){
+
+        Scanner s = new Scanner(System.in);
+        int n = s.nextInt();
+        int a[] = new int[n];
+
+        // 数値とその個数を格納
+        HashMap<Integer, Long> map = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            a[i] = s.nextInt();
+
+            if (!map.containsKey(a[i])) {
+                map.put(a[i], (long)1);
+            } else {
+                map.put(a[i], map.get(a[i])+1);
+            }
+        }
+
+        long all = 0;
+
+        // すべての2つのボールを選び出す方法の数を求める
+        for (int key :map.keySet()) {
+            all += map.get(key) * (map.get(key) - 1) / 2;
+        }
+
+        for (int i = 0; i < n; i++) {
+            // a[i]の数値をのぞいたN-1を考える
+            // a[i]を除いた場合の数値の組み合わせの数は、N全体のa[i]の数をnとすると
+            // n*(n-1)/2である。そのためN-1の場合の組み合わせは(n-1)*(n-2)/2となる。
+            // その差はn-1である。
+            long tmp = map.get(a[i]);
+            System.out.println(all - (tmp - 1));
+        }
+    }
+}
