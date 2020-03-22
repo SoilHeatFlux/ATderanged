@@ -1,0 +1,33 @@
+  import java.util.*;
+
+/*
+問題文
+長さが奇数である文字列 S が以下の条件をすべて満たすとき、
+S は「強い回文」であるといいます。
+
+S は回文である。
+N を S の長さとするとき、S の1 文字目から (N−1)/2 文字目まで(両端含む)からなる文字列は回文である。
+S の(N+3)/2 文字目からN 文字目まで(両端含む)からなる文字列は回文である。
+S が強い回文かどうかを判定してください。
+
+制約
+S は英小文字のみからなる
+S の長さは 3 以上 99 以下の奇数
+*/
+public class Main {
+    public static void main(String[] args){
+
+        Scanner s = new Scanner(System.in);
+        String n = s.next();
+
+        // 条件に合わせて分割
+        String f = n.substring((n.length())/2);
+        String e = n.substring((n.length()+2)/2, n.length());
+
+        String ans = "Yes";
+        if (!f.equals(e)) {
+            ans = "No";
+        }
+        System.out.println(ans);
+    }
+}
