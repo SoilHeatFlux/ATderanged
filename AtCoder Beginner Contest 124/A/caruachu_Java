@@ -1,0 +1,37 @@
+import java.util.*;
+
+/*
+問題文
+2 個のボタンがあり、大きさはそれぞれ A,B です。
+
+大きさ X のボタンを押すと、X 枚のコインを獲得し、そのボタンの大きさが 1 小さくなります。
+
+あなたは、いずれかのボタンを押すことを 2 回行います。
+同じボタンを 2 回押しても構いません。
+最大で何枚のコインを獲得できるでしょうか。
+
+制約
+入力は全て整数である。
+3≤A,B≤20
+*/
+
+public class Main {
+    public static void main(String[] args){
+
+        Scanner s = new Scanner(System.in);
+        int a = s.nextInt();
+        int b = s.nextInt();
+
+        // 絶対値
+        int n = Math.abs(a-b);
+
+        // 絶対値が２以上の場合、値が大きいほうを足して１引く
+        if (n >= 2) {
+          System.out.println(Math.max(a, b)+Math.max(a, b)-1);
+        } else {
+          // 絶対値が1以下の場合、足し合わせればよい
+          System.out.println(a + b);
+        }
+
+    }
+}
